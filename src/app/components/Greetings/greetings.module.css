@@ -1,0 +1,42 @@
+.greetings{
+    padding: 16px;
+    text-align: center;
+}
+
+.greetings > img {
+    width: 75%;
+}
+
+.greetings > button {
+    display: block;
+    margin: auto;
+    padding: 8px 16px;
+    border: none;
+    background-color: transparent;
+    border: 1px solid #1c7962;
+    color: #1c7962;
+    border-radius: 4px;
+}
+
+.greetings > button:hover {
+    background-color: #1c7962;
+    border: 1px solid #1c7962;
+    color: white;
+}
+
+.greetings input {
+    display: block;
+    margin: 16px auto;
+    padding: 16px 8px;
+    min-width: 300px;
+    border: 1px solid #1c7962;
+    border-radius: 4px;
+}
+
+.greetings > input:hover {
+    border: 2px solid #07503e;
+}
+
+.greetings > input:focus {
+    border: 2px solid #07503e;
+}

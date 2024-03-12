@@ -1,0 +1,33 @@
+.header, .title, .avatar {
+    box-sizing: border-box;
+    color: white;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #1c7962;
+}
+
+.title {
+    color: white;
+    padding-left: 110px;
+    float: left;
+}
+
+.username {
+    float: right;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    float: right;
+    background-color: grey;
+    margin-right: 110px;
+    padding: 10px;
+    text-align: center;
+}
