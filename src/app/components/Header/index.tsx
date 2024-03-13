@@ -1,3 +1,4 @@
+"use client"
 import styles from "./header.module.css"
 import { useData } from "./../../context/DataContext";
 import { useEffect } from "react";
