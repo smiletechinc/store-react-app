@@ -4,12 +4,13 @@
   "private": true,
   "homepage": "https://smiletechinc.github.io/store-react-app",
   "scripts": {
-    "deploy": "gh-pages -b main -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"No tests specified\" && exit 0"
+    "export": "next build && next export",
+    "test": "echo \"No tests specified\" && exit 0",
+    "deploy": "gh-pages -b main -d build"
   },
   "dependencies": {
     "gh-pages": "^6.1.1",

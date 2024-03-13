@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-npm-
 
       - run: npm install --frozen-lockfile
-      - run: npm build
+      - run: npm run build
       - run: npm export
 
       - name: Deploy
