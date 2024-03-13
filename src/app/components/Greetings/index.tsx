@@ -20,7 +20,7 @@ export default function Error (props: any) {
             <img src="https://img.freepik.com/free-vector/happy-tiny-people-near-huge-welcome-word-flat-illustration_74855-10808.jpg" />
             <h2>{message ? message : "Sorry Data Cannot be loaded"}</h2>
             <h3>Please Enter your name to continue</h3>
-            <input placeholder="Please enter your name to continue" style={{borderColor: error && 'red'}} onChange={(target) => {
+            <input placeholder="Please enter your name to continue" style={{borderColor: error ? 'red' : '#1c7962' }} onChange={(target) => {
                 setName(target.target.value);
                 if (target.target.value) {
                     setError(false)
