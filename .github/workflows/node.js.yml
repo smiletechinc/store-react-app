@@ -1,44 +1,26 @@
-name: GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-  pull_request:
+    branches:
+      - main  # Change this to your main branch name
 
 jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+      - name: Install dependencies
+        run: npm install
 
-      - name: Get npm cache
-        id: npm-cache
-        run: echo "NPM_CACHE_DIR=$(npm cache dir)" >> "${GITHUB_OUTPUT}"
+      - name: Build
+        run: npm run build
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.npm-cache.NPM_CACHE_DIR }} # Specify the directory to cache
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/npm.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - run: npm install --frozen-lockfile
-      - run: npm run build
-      # - run: npm run export
-
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
-          path: ./out # Specify the path to the directory containing files to deploy
