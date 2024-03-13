@@ -4,6 +4,7 @@
   "private": true,
   "": "https://github.com/smiletechinc/store-react-app",
   "scripts": {
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
