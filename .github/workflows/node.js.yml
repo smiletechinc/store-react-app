@@ -33,7 +33,7 @@ jobs:
 
       - run: npm install --frozen-lockfile
       - run: npm run build
-      - run: npm export
+      - run: npm run export
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
