@@ -3,16 +3,30 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const DataContext = createContext();
+const isBrowser = typeof window !== 'undefined';
 
 export const DataProvider = ({ children }) => {
   const [productsData, setProductsData] = useState(() => {
-    const storedData = localStorage.getItem('productsData');
+    if (isBrowser) {
+  // Access localStorage
+      const storedData = localStorage.getItem('productsData');
     return storedData ? JSON.parse(storedData) : {products: []};
+} else {
+  // Handle non-browser environment
+    console.warn('Error fetching data from server side')
+}
   });
 
   const [userData, setUserData] = useState(() => {
-    const storedData = localStorage.getItem('userData');
+    if (isBrowser) {
+  // Access localStorage
+      const storedData = localStorage.getItem('userData');
     return storedData ? JSON.parse(storedData) : "";
+} else {
+  // Handle non-browser environment
+  console.warn('Error fetching data from server side')
+}
+
   });
 
   useEffect(() => {

@@ -25,9 +25,10 @@ export default function Home() {
       <Header />
       <div className={styles.products}>
         {
-          productsData.products.length > 0 ? productsData.products.map((product) => {
+          productsData && productsData.products.length > 0 ? productsData.products.map((product: any, index: any) => {
             return(
               <Card
+                key={index}
                 title={product.title}
                 price={product.price}
                 details={product.description}
