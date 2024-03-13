@@ -2,7 +2,7 @@
   "name": "store-react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/smiletechinc/store-react-app",
+  "homepage": "https://smiletechinc.github.io/store-react-app",
   "scripts": {
     "deploy": "gh-pages -d build",
     "dev": "next dev",
