@@ -1,25 +1,44 @@
-name: Deploy to GitHub Pages
+
+name: GitHub Pages
 
 on:
   push:
   pull_request:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-      - name: Build
-        run: npm run build
+      - name: Get npm cache
+        id: npm-cache
+        run: echo "NPM_CACHE_DIR=$(npm cache dir)" >> "${GITHUB_OUTPUT}"
 
-      - name: Deploy to GitHub Pages
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.npm-cache.outputs.NPM_CACHE_DIR }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/npm.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - run: npm install --frozen-lockfile
+      - run: npm run build
+      # - run: npm run export
+
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
