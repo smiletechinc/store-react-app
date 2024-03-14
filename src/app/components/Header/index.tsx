@@ -12,7 +12,7 @@ export default function Header (){
 
     return(
         <div className={styles.header}>
-            <h2 className={styles.title}>Apple Mac Store</h2>
+            <h2 className={styles.title}>Mac Store</h2>
             {userData && <h1 className={styles.avatar}>{userData.charAt(0)}</h1>}
             {userData && <h4 className={styles.username}>{userData}</h4>}
         </div>
