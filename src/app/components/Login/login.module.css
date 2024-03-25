@@ -1,0 +1,31 @@
+/* The popup form - hidden by default */
+.form {
+  display: block;
+  position: fixed;
+  box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px;
+  border-radius: 16px;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.container {
+  padding: 10px;
+  background-color: white;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #1c7962;
+  color: #1c7962;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #1c7962;
+  border: 1px solid #1c7962;
+  color: white;
+}
