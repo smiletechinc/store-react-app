@@ -29,6 +29,14 @@ export const DataProvider = ({ children }) => {
 
   });
 
+  const [allUsersData, setAllUsersData] = useState(() => {
+    if(isBrowser) {
+      //AccessLocalStorage
+      const storedData = localStorage.getItem('allUsersData');
+      return storedData ? JSON.parse(storedData) : "";
+    }
+  });
+
   useEffect(() => {
     localStorage.setItem('productsData', JSON.stringify(productsData));
   }, [productsData]);
@@ -37,8 +45,12 @@ export const DataProvider = ({ children }) => {
     localStorage.setItem('userData', JSON.stringify(userData));
   }, [userData]);
 
+    useEffect(() => {
+    localStorage.setItem('allUsersData', JSON.stringify(allUsersData));
+  }, [allUsersData]);
+
   return (
-    <DataContext.Provider value={{ productsData, setProductsData, userData, setUserData }}>
+    <DataContext.Provider value={{ productsData, setProductsData, userData, setUserData, allUsersData, setAllUsersData }}>
       {children}
     </DataContext.Provider>
   );

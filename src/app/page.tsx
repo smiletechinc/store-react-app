@@ -5,6 +5,7 @@ import Header from "./components/Header/index";
 import Card from "./components/Card/index";
 import Error from "./components/Greetings/index"
 import { useData } from "./context/DataContext"
+import Auth from "./components/Auth/index";
 
 export default function Home() {
   const { productsData, setProductsData } = useData();
@@ -22,7 +23,8 @@ export default function Home() {
 
   return (
     <div className={styles.main}>
-      <Header />
+      {productsData && productsData.products.length > 0 && <Header />}
+
       <div className={styles.products}>
         {
           productsData && productsData.products.length > 0 ? productsData.products.map((product: any, index: any) => {
@@ -38,11 +40,7 @@ export default function Home() {
           })
           :
           <div className={styles.greetings}>
-            <Error
-              title="Fetch Data"
-              message="Welcome to My Store"
-              onButtonClick={fetchData}
-            />
+            <Auth />
           </div>
         }
       </div>
