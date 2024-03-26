@@ -4,8 +4,8 @@ import styles from "./page.module.css";
 import Header from "./components/Header/index";
 import Card from "./components/Card/index";
 import Error from "./components/Greetings/index"
-import Login from "./components/Login";
 import { useData } from "./context/DataContext"
+import Auth from "./components/Auth/index";
 
 export default function Home() {
   const { productsData, setProductsData } = useData();
@@ -40,8 +40,7 @@ export default function Home() {
           })
           :
           <div className={styles.greetings}>
-            <Login />
-
+            <Auth />
           </div>
         }
       </div>

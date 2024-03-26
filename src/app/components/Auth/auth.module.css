@@ -1,0 +1,19 @@
+.heading {
+  font-size:small;
+  color: black;
+  text-align: center;
+}
+
+.simpleButton {
+    background-color: transparent;
+    border: none;
+    font-size:medium;
+    color: #1c7962;
+}
+
+.simpleButton :hover {
+    background-color: transparent;
+    border: none;
+    color: #0f4e3f;
+    font-size:larger;
+}

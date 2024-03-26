@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import styles from "./login.module.css";
+import styles from "./signup.module.css";
 import InputField from "../InputField";
 import GreenButton from "../GreenButton";
 import ErrorText from "../ErrorText";
 import useUsers from "@/app/hooks/useUsers";
 
-export default function Login() {
+export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [ error, setError ] = useState('Username or password cannot be empty')
-  const { login } = useUsers();
+
+  const { signup } = useUsers();
 
   const handleClicked = () => {
     if (!error){
-        login(username, password);
+        signup(username, password);
     }
   }
 
@@ -24,11 +25,11 @@ export default function Login() {
   return(
     <div className={styles.form}>
     <form  className={styles.container}>
-      <h1>Login</h1>
+      <h1>Signup</h1>
       <InputField placeholder="Username" onChange={setUsername}/>
       <InputField placeholder="Password" onChange={setPassword}/>
       <ErrorText error={error} />
-      <GreenButton onButtonClick={handleClicked} title="Login"/>
+      <GreenButton onButtonClick={handleClicked} title="Signup"/>
     </form>
     </div>
   )
