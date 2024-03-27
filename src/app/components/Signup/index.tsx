@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./signup.module.css";
-import InputField from "../InputField";
-import GreenButton from "../GreenButton";
-import ErrorText from "../ErrorText";
+import InputField from "../InputField/index";
+import GreenButton from "../GreenButton/index";
+import ErrorText from "../ErrorText/index";
 import useUsers from "@/app/hooks/useUsers";
 
 export default function Signup() {
@@ -10,11 +10,11 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [ error, setError ] = useState('Username or password cannot be empty')
 
-  const { signup } = useUsers();
+  // const { signup } = useUsers();
 
   const handleClicked = () => {
     if (!error){
-        signup(username, password);
+        // signup(username, password);
     }
   }
 

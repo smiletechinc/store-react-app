@@ -15,7 +15,7 @@ export default function Auth() {
             { currentMode === 0 && 
             <div>
                  <Login />
-                 <h4 className={styles.heading}>Don't Have an account?  <button className={styles.simpleButton} onClick={handleSwitch}>Signup</button></h4>
+                 <h4 className={styles.heading}>Do not Have an account?  <button className={styles.simpleButton} onClick={handleSwitch}>Signup</button></h4>
             </div>
             }
 
