@@ -14,7 +14,10 @@ export default function Login() {
   const handleClicked = () => {
     if (!error){
       console.log('handleClicked')
-      login(username, password);
+      let success = login(username, password);
+      if(!success) {
+        setError("User could not be logged in!")
+      }
     }
   }
 

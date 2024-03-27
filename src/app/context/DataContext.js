@@ -49,8 +49,14 @@ export const DataProvider = ({ children }) => {
     localStorage.setItem('allUsersData', JSON.stringify(allUsersData));
   }, [allUsersData]);
 
+  const removeData = () => {
+    console.log("Data removing");
+    localStorage.removeItem('userData');
+    localStorage.removeItem('productsData');
+  }
+
   return (
-    <DataContext.Provider value={{ productsData, setProductsData, userData, setUserData, allUsersData, setAllUsersData }}>
+    <DataContext.Provider value={{ productsData, setProductsData, userData, setUserData, removeData, allUsersData, setAllUsersData }}>
       {children}
     </DataContext.Provider>
   );
