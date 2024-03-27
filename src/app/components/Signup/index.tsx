@@ -10,11 +10,11 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [ error, setError ] = useState('Username or password cannot be empty')
 
-  // const { signup } = useUsers();
+  const { signup } = useUsers();
 
   const handleClicked = () => {
     if (!error){
-        // signup(username, password);
+      signup(username, password);
     }
   }
 
@@ -24,13 +24,13 @@ export default function Signup() {
 
   return(
     <div className={styles.form}>
-    <form  className={styles.container}>
-      <h1>Signup</h1>
-      <InputField placeholder="Username" onChange={setUsername}/>
-      <InputField placeholder="Password" onChange={setPassword}/>
-      <ErrorText error={error} />
-      <GreenButton onButtonClick={handleClicked} title="Signup"/>
-    </form>
+      <div  className={styles.container}>
+        <h1>Signup</h1>
+        <InputField placeholder="Username" onChange={setUsername}/>
+        <InputField placeholder="Password" onChange={setPassword}/>
+        <ErrorText error={error} />
+        <GreenButton onButtonClick={handleClicked} title="Signup"/>
+      </div>
     </div>
   )
 }

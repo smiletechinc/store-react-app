@@ -1,28 +1,30 @@
-import { useState, useEffect } from "react";
 import { useData } from "../context/DataContext";
+import useProducts from "./useProducts";
 
 export const useUsers = () => {
-const { allUsersData, setAllUsersData, setUserData  } = useData();
+  const { allUsersData, setAllUsersData, setUserData } = useData();
+  const { fetchProducts } = useProducts();
 
-function userAvailable() {
-
-}
-
-function login(email: any, password: any) {
-    let user = allUsersData.find((o: { email: any; }) => o.email === email);
-    if (user.password === password) {
-        setUserData(user);
-        return true;
+  function login(email, password) {
+    const user = allUsersData.find((user) => user.email === email);
+    if (user && user.password === password) {
+        console.log("Login success! ", user)
+      setUserData(user);
+      fetchProducts();
+      return true; // Login successful
+    } else {
+        console.log("Login error!")
+      return false; // Login failed
     }
-}
+  }
 
-function signup(email: any, password: any) {
-    const newUsers = {...allUsersData, email, password};
-    console.log(newUsers);
-    setAllUsersData(newUsers);
-}
+  function signup(email, password) {
+    console.log("Signing up the user!");
+    const newUser = { email, password }; // Create a new user object
+    setAllUsersData([...allUsersData, newUser]); // Add the new user to the array
+  }
 
-  return [login, signup];
+  return { login, signup }; // Return an object containing login and signup functions
 };
 
 export default useUsers;

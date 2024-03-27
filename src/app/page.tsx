@@ -8,18 +8,7 @@ import { useData } from "./context/DataContext"
 import Auth from "./components/Auth/index";
 
 export default function Home() {
-  const { productsData, setProductsData } = useData();
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('https://dummyjson.com/products');
-      const data = await response.json();
-      console.log("fetch data: ", data)
-      setProductsData(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  const { productsData } = useData();
 
   return (
     <div className={styles.main}>
