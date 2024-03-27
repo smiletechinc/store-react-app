@@ -8,25 +8,24 @@ const isBrowser = typeof window !== 'undefined';
 export const DataProvider = ({ children }) => {
   const [productsData, setProductsData] = useState(() => {
     if (isBrowser) {
-  // Access localStorage
+      // Access localStorage
       const storedData = localStorage.getItem('productsData');
-    return storedData ? JSON.parse(storedData) : {products: []};
-} else {
-  // Handle non-browser environment
-    console.warn('Error fetching data from server side')
-}
+      return storedData ? JSON.parse(storedData) : {products: []};
+    } else {
+      // Handle non-browser environment
+      console.warn('Error fetching data from server side')
+    }
   });
 
   const [userData, setUserData] = useState(() => {
     if (isBrowser) {
-  // Access localStorage
-      const storedData = localStorage.getItem('userData');
-    return storedData ? JSON.parse(storedData) : "";
-} else {
-  // Handle non-browser environment
-  console.warn('Error fetching data from server side')
-}
-
+      // Access localStorage
+          const storedData = localStorage.getItem('userData');
+        return storedData ? JSON.parse(storedData) : "";
+    } else {
+      // Handle non-browser environment
+      console.warn('Error fetching data from server side')
+    }
   });
 
   const [allUsersData, setAllUsersData] = useState(() => {
@@ -46,6 +45,7 @@ export const DataProvider = ({ children }) => {
   }, [userData]);
 
     useEffect(() => {
+      console.log("DataContext -> allUsersData: ", allUsersData)
     localStorage.setItem('allUsersData', JSON.stringify(allUsersData));
   }, [allUsersData]);
 
