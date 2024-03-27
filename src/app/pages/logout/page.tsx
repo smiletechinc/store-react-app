@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useData } from "./../../context/DataContext"
-
+import styles from "./logout.module.css"
 
 export default function Logout(){
   const { removeData } = useData();
@@ -12,9 +12,14 @@ export default function Logout(){
         window.location.replace("/");
     }
 
+    useEffect(() => {
+        setTimeout(() => {
+            handleLogout();
+        }, 5000)
+    }, [])
     return(
-        <div>
-            <button onClick={handleLogout}>Logout</button>
+        <div className={styles.container}>
+            <h1>Logging out...</h1>
         </div>
     )
 }

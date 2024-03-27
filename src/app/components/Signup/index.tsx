@@ -14,7 +14,12 @@ export default function Signup() {
 
   const handleClicked = () => {
     if (!error){
-      signup(username, password);
+      let success = signup(username, password);
+        if(!success) {
+          setError("User already exists!")
+        } else {
+          setError("User signed up successfully!")
+        }
     }
   }
 

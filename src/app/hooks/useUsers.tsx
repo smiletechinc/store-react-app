@@ -19,9 +19,16 @@ export const useUsers = () => {
   }
 
   function signup(email, password) {
-    console.log("Signing up the user!");
-    const newUser = { email, password }; // Create a new user object
-    setAllUsersData([...allUsersData, newUser]); // Add the new user to the array
+    const user = allUsersData.find((user) => user.email === email);
+    if (user) {
+        return false;
+    } else{
+        console.log("Signing up the user!");
+        const newUser = { email, password }; // Create a new user object
+        setAllUsersData([...allUsersData, newUser]); // Add the new user to the array
+        return true;
+    }
+
   }
 
   return { login, signup }; // Return an object containing login and signup functions
