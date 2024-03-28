@@ -5,8 +5,8 @@ export const useUsers = () => {
   const { allUsersData, setAllUsersData, setUserData } = useData();
   const { fetchProducts } = useProducts();
 
-  function login(email, password) {
-    const user = allUsersData.find((user) => user.email === email);
+  function login(email: any, password: any) {
+    const user = allUsersData.find((user: any) => user.email === email);
     if (user && user.password === password) {
         console.log("Login success! ", user)
       setUserData(user);
@@ -18,8 +18,8 @@ export const useUsers = () => {
     }
   }
 
-  function signup(email, password) {
-    const user = allUsersData.find((user) => user.email === email);
+  function signup(email: any, password: any) {
+    const user = allUsersData.find((user: any) => user.email === email);
     if (user) {
         return false;
     } else{
